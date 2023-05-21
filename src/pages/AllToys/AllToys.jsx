@@ -7,7 +7,7 @@ const AllToys = () => {
   const [filteredToys, setFilteredToys] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://magical-toyland-server.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -54,7 +54,7 @@ const AllToys = () => {
             <tr className="bg-gray-200">
               <th className="px-4 py-2">Seller</th>
               <th className="px-4 py-2">Toy Name</th>
-              <th className="px-4 py-2">Sub-category</th>
+              <th className="px-4 py-2">Category</th>
               <th className="px-4 py-2">Price</th>
               <th className="px-4 py-2">Available Qty</th>
               <th className="px-4 py-2">Action</th>

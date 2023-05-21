@@ -26,7 +26,7 @@ const NavBar = () => {
   </div>
   <div className="navbar-end space-x-4 pr-12">
   <Link to="/add-toy" className="btn btn-ghost">Add A Toy</Link>
-  <Link to="/" className="btn btn-ghost">My Toys</Link>
+  <Link to="/my-toys" className="btn btn-ghost">My Toys</Link>
   <Link to="/login" className="btn btn-ghost">Login</Link>
   </div>
 </div>

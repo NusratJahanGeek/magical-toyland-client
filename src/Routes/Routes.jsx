@@ -9,6 +9,8 @@ import Blog from "../pages/Blog/Blog";
 import ToyDetails from "../pages/ToyDetails/ToyDetails";
 import AllToys from "../pages/AllToys/AllToys";
 import AddToy from "../pages/AddToy/AddToy";
+import MyToys from "../pages/MyToys/MyToys";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
         {
             path: "add-toy",
             element: <AddToy></AddToy>
+        },
+        {
+            path: "my-toys",
+            element: <PrivateRoute><MyToys></MyToys></PrivateRoute>
         }
       ]
     },
@@ -59,7 +65,7 @@ const router = createBrowserRouter([
                 path: ':id',
                 element: 
                     <ToyDetails></ToyDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
+                loader: ({params}) => fetch(`https://magical-toyland-server.vercel.app/toys/${params.id}`)
             }
         ]
     }

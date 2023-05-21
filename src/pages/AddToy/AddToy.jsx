@@ -30,7 +30,7 @@ const AddToy = () => {
 
     
 
-     fetch("http://localhost:5000/toys", {
+     fetch("https://magical-toyland-server.vercel.app/toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -94,7 +94,7 @@ const AddToy = () => {
             />
           </div>
           <div>
-            <label className="block mb-1 font-semibold">category</label>
+            <label className="block mb-1 font-semibold">Category</label>
             <select
               name="category"
               className="input input-bordered w-full"
