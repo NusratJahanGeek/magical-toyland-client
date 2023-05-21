@@ -17,7 +17,7 @@ const NavBar = () => {
     {/* Add menu links directly on the navbar */}
     <div className="navbar-menu ml-4 space-x-4 hidden md:flex">
       <Link to="/" className="btn btn-ghost">Home</Link>
-      <Link to="/portfolio" className="btn btn-ghost">All Toys</Link>
+      <Link to="/toys" className="btn btn-ghost">All Toys</Link>
       <Link to="/blogs" className="btn btn-ghost">Blogs</Link>
     </div>
   </div>
