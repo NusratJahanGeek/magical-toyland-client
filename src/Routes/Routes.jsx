@@ -6,6 +6,7 @@ import LoginLayout from "../Layout/LoginLayout";
 import SignUp from "../pages/Login/SignUp/Signup";
 import NotFound from "../pages/Login/NotFound/NotFound";
 import Blog from "../pages/Blog/Blog";
+import ToyDetails from "../pages/ToyDetails/ToyDetails";
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,18 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: "toy",
+        element: <Main></Main>,
+        children: [
+            {
+                path: ':id',
+                element: 
+                    <ToyDetails></ToyDetails>,
+                loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
+            }
+        ]
+    }
   ]);
 
   export default router;
