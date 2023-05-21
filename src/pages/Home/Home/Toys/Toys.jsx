@@ -16,14 +16,14 @@ const Toys = ({toys}) => {
         <TabPanel>
           <div className="grid grid-cols-2 gap-4">
             {toys
-              .filter((toy) => toy.subcategory === 'Disney Princesses')
+              .filter((toy) => toy.category === 'Disney Princesses')
               .map((toy) => (
                 <div key={toy._id} className="flex items-center">
                   <div className="w-1/2">
                     <img src={toy.picture} alt={`Toy ${toy._id}`} className="w-full h-auto" />
                   </div>
                   <div className="w-1/2">
-                    <h3>{toy.toyName}</h3>
+                    <h3>{toy.name}</h3>
                     <p>Price: ${toy.price}</p>
                     <p>Rating: {toy.rating}</p>
                     <Link to={`/toy/${toy._id}`}>
@@ -38,14 +38,14 @@ const Toys = ({toys}) => {
         <TabPanel>
           <div className="grid grid-cols-2 gap-4">
             {toys
-              .filter((toy) => toy.subcategory === 'Disney Fairies')
+              .filter((toy) => toy.category === 'Disney Fairies')
               .map((toy) => (
                 <div key={toy._id} className="flex items-center">
                   <div className="w-1/2">
                     <img src={toy.picture} alt={`Toy ${toy._id}`} className="w-full h-auto" />
                   </div>
                   <div className="w-1/2">
-                    <h3>{toy.toyName}</h3>
+                    <h3>{toy.name}</h3>
                     <p>Price: ${toy.price}</p>
                     <p>Rating: {toy.rating}</p>
                     <Link to={`/toy/${toy._id}`}>
@@ -60,14 +60,14 @@ const Toys = ({toys}) => {
         <TabPanel>
           <div className="grid grid-cols-2 gap-4">
             {toys
-              .filter((toy) => toy.subcategory === 'Disney Frozen')
+              .filter((toy) => toy.category === 'Disney Frozen')
               .map((toy) => (
                 <div key={toy._id} className="flex items-center">
                   <div className="w-1/2">
                     <img src={toy.picture} alt={`Toy ${toy._id}`} className="w-full h-auto" />
                   </div>
                   <div className="w-1/2">
-                    <h3>{toy.toyName}</h3>
+                    <h3>{toy.name}</h3>
                     <p>Price: ${toy.price}</p>
                     <p>Rating: {toy.rating}</p>
                     <Link to={`/toy/${toy._id}`}>

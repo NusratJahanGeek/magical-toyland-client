@@ -25,7 +25,7 @@ const AllToys = () => {
 
   const filterToys = () => {
     const filtered = toys.filter((toy) =>
-      toy.toyName.toLowerCase().includes(searchQuery.toLowerCase())
+      toy.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredToys(filtered);
   };
@@ -63,9 +63,9 @@ const AllToys = () => {
           <tbody>
             {filteredToys.map((toy) => (
               <tr key={toy.id}>
-                <td className="px-4 py-2">{toy.sellerName || "N/A"}</td>
-                <td className="px-4 py-2">{toy.toyName}</td>
-                <td className="px-4 py-2">{toy.subcategory}</td>
+                <td className="px-4 py-2">{toy.seller || "N/A"}</td>
+                <td className="px-4 py-2">{toy.name}</td>
+                <td className="px-4 py-2">{toy.category}</td>
                 <td className="px-4 py-2">${toy.price}</td>
                 <td className="px-4 py-2">{toy.quantity}</td>
                 <td className="px-4 py-2">

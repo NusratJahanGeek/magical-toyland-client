@@ -25,7 +25,7 @@ const NavBar = () => {
     <Link to="/"><img src={logo} alt="" width={100} height={100} /></Link>
   </div>
   <div className="navbar-end space-x-4 pr-12">
-  <Link to="/" className="btn btn-ghost">Add A Toy</Link>
+  <Link to="/add-toy" className="btn btn-ghost">Add A Toy</Link>
   <Link to="/" className="btn btn-ghost">My Toys</Link>
   <Link to="/login" className="btn btn-ghost">Login</Link>
   </div>
