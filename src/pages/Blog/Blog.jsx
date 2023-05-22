@@ -1,210 +1,203 @@
 import { useState } from "react";
-import './Blog.css'
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { Link } from "react-router-dom";
+import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
+import Rating from "react-rating";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faStar as farStar,
+  faStar as fasStar,
+} from "@fortawesome/free-solid-svg-icons";
+import "react-tabs/style/react-tabs.css";
+import "./Blog.css";
+
+// Add the imported icons to the FontAwesome library
+library.add(farStar, fasStar);
+
+const CustomTab = ({ children, ...otherProps }) => (
+  <Tab className="custom-tab" {...otherProps}>
+    {children}
+  </Tab>
+);
+
+CustomTab.tabsRole = "Tab";
 
 const Blog = () => {
-    const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(0);
 
-    const handleTabClick = (index) => {
-      setActiveTab(index);
-    };
-  
+  const handleTabClick = (index) => {
+    setActiveTab(index);
+  };
+
   return (
-    
-    <div className="bg-gray-100">
-    <div className="py-10">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-4">
-          <h2 className="text-3xl font-bold">Question & Answer</h2>
-        </div>
-        <div className="md:mx-5">
-          <div className="tabs">
-          <a
-                className={`tab tab-lifted ${activeTab === 0 ? "tab-active" : ""}`}
-                onClick={() => handleTabClick(0)}
-              >
-                Access Tokens
-              </a>
-              <a
-                className={`tab tab-lifted ${activeTab === 1 ? "tab-active" : ""}`}
-                onClick={() => handleTabClick(1)}
-              >
-                SQL vs NoSQL
-              </a>
-              <a
-                className={`tab tab-lifted ${activeTab === 2 ? "tab-active" : ""}`}
-                onClick={() => handleTabClick(2)}
-              >
-                Express.js & NestJS
-              </a>
-              <a
-                className={`tab tab-lifted ${activeTab === 3 ? "tab-active" : ""}`}
-                onClick={() => handleTabClick(3)}
-              >
-                MongoDB Aggregate
-              </a>
+    <div className="flex justify-center items-center px-24 pt-24">
+      <Tabs className="tabs">
+        <TabList className="flex space-x-4 mb-4">
+          <CustomTab>Access Tokens</CustomTab>
+          <CustomTab>SQL vs NoSQL</CustomTab>
+          <CustomTab>Express.js & NestJS</CustomTab>
+          <CustomTab>MongoDB Aggregate</CustomTab>
+        </TabList>
+
+        <TabPanel className="tab-panel">
+          <div className="mb-8 p-10">
+            <h4 className="text-2xl mb-6">
+              Q: What is an access token and refresh token? How do they work and
+              where should we store them on the client-side?
+            </h4>
+            <p className="text-lg">
+              Access tokens and refresh tokens are essential components of
+              modern authentication systems. An access token is a credential
+              that grants permission to access specific resources or perform
+              actions within an application. It serves as a digital key and is
+              short-lived for security purposes. On the other hand, a refresh
+              token is a long-lived credential used to obtain a new access token
+              when the current one expires.
+              <br />
+              <br />
+              The process typically involves the following steps: during
+              authentication, the server generates an access token and a refresh
+              token. The client includes the access token in requests to access
+              protected resources. If the token is valid, the server processes
+              the request; otherwise, it returns an authentication error. When
+              the access token expires, the client uses the refresh token to
+              obtain a new access token from the server.
+              <br />
+              <br />
+              Storing these tokens on the client-side requires security
+              measures. Access tokens can be stored in memory or browser storage
+              during the user session, while refresh tokens should be stored in
+              more persistent and secure storage like HTTP-only cookies or local
+              storage.
+              <br />
+              <br />
+              In summary, access tokens and refresh tokens enable secure
+              authorization and authentication. Access tokens provide temporary
+              access to resources, while refresh tokens allow for obtaining new
+              access tokens without reauthentication. Secure storage on the
+              client-side ensures the protection of these tokens, enhancing
+              overall security and user experience.
+            </p>
           </div>
-  
-          <div className="tab-content" style={{ display: activeTab === 0 ? "block" : "none" }}>
-            <div className="mb-8">
-              <h4 className="text-xl font-bold mb-2">
-                Q: What is an access token and refresh token? How do they work
-                and where should we store them on the client-side?
-              </h4>
-              <p>
-                Access tokens and refresh tokens are essential components of
-                modern authentication systems. An access token is a credential
-                that grants permission to access specific resources or perform
-                actions within an application. It serves as a digital key and is
-                short-lived for security purposes. On the other hand, a refresh
-                token is a long-lived credential used to obtain a new access token
-                when the current one expires.
-                <br /><br />
-                The process typically involves the following steps: during
-                authentication, the server generates an access token and a refresh
-                token. The client includes the access token in requests to access
-                protected resources. If the token is valid, the server processes
-                the request; otherwise, it returns an authentication error. When
-                the access token expires, the client uses the refresh token to
-                obtain a new access token from the server.
-                <br /><br />
-                Storing these tokens on the client-side requires security measures.
-                Access tokens can be stored in memory or browser storage during the
-                user session, while refresh tokens should be stored in more
-                persistent and secure storage like HTTP-only cookies or local
-                storage.
-                <br /><br />
-                In summary, access tokens and refresh tokens enable secure
-                authorization and authentication. Access tokens provide temporary
-                access to resources, while refresh tokens allow for obtaining new
-                access tokens without reauthentication. Secure storage on the
-                client-side ensures the protection of these tokens, enhancing
-                overall security and user experience.
-              </p>
-            </div>
+        </TabPanel>
+
+        <TabPanel className="tab-panel">
+          <div className="mb-8 p-10">
+            <h4 className="text-2xl mb-6">
+              Q: Compare SQL and NoSQL databases?
+            </h4>
+            <p className="text-lg">
+              SQL databases are like organized filing cabinets. They have a
+              fixed structure and predefined rules for storing data. This makes
+              them good for applications that need strict organization and
+              relationships between data, like a spreadsheet. They are commonly
+              used for things like online stores or banking systems.
+              <br />
+              <br />
+              NoSQL databases, on the other hand, are more like a big storage
+              box where you can throw things in without much organization. They
+              are flexible and can handle large amounts of data. NoSQL databases
+              are great for applications that need to handle lots of data
+              quickly, like social media or real-time analytics.
+              <br />
+              <br />
+              The choice between SQL and NoSQL depends on what you need for your
+              application. If you need strict organization and structured data,
+              SQL is a good choice. If you need to handle lots of data quickly
+              and don't need strict organization, NoSQL is a better fit.
+              <br />
+              <br />
+              In summary, SQL is like a well-organized filing cabinet, while
+              NoSQL is like a big storage box. The right choice depends on the
+              needs of your web application.
+            </p>
           </div>
-  
-          <div className="tab-content" style={{ display: activeTab === 1 ? "block" : "none" }}>
-            <div className="mb-8">
-              <h4 className="text-xl font-bold mb-2">Q: Compare SQL and NoSQL databases?</h4>
-              <p>
-                SQL and NoSQL databases are two distinct types of database
-                management systems, each with its own strengths and use cases.
-                <br /><br />
-                SQL databases, also known as relational databases, are based on a
-                structured query language (SQL) and have a predefined schema that
-                enforces relationships between tables. They excel in handling
-                complex transactions and maintaining data integrity. SQL databases
-                are suitable for applications that require strict consistency,
-                ACID (Atomicity, Consistency, Isolation, Durability) compliance,
-                and structured data. They are commonly used for financial systems,
-                e-commerce platforms, and applications with complex data
-                relationships.
-                <br /><br />
-                On the other hand, NoSQL databases, also known as non-relational
-                databases, offer a more flexible and scalable approach to data
-                storage. They do not rely on a fixed schema and allow for storing
-                unstructured or semi-structured data. NoSQL databases can handle
-                large volumes of data and provide high scalability and
-                availability. They are well-suited for applications that require
-                high performance, horizontal scalability, and flexible data
-                models. NoSQL databases are commonly used in web applications,
-                real-time analytics, and large-scale data processing.
-                <br /><br />
-                While SQL databases provide strong consistency and well-defined
-                relationships, NoSQL databases prioritize scalability, flexibility,
-                and performance. The choice between them depends on the specific
-                requirements of an application, such as data structure, scalability
-                needs, and desired consistency guarantees.
-                <br /><br />
-                In summary, SQL databases excel in structured data and complex
-                transactions, offering strong consistency and data integrity.
-                NoSQL databases prioritize scalability, flexibility, and
-                performance, making them suitable for handling large volumes of
-                unstructured data with high availability. The decision between SQL
-                and NoSQL depends on the specific needs and characteristics of the
-                application at hand.
-              </p>
-            </div>
+        </TabPanel>
+
+        <TabPanel className="tab-panel">
+          <div className="mb-8 p-10">
+            <h4 className="text-2xl mb-6">
+              Q: What is Express.js? What is NestJS?
+            </h4>
+            <p className="text-lg">
+              Express.js is a minimal and flexible framework that allows
+              developers to create web servers and APIs using JavaScript or
+              TypeScript. It provides a set of features for handling HTTP
+              requests and responses, defining routes, and implementing various
+              functionalities. Express.js is lightweight and has a large
+              ecosystem of plugins and middleware, which enables developers to
+              add additional functionality easily.
+              <br />
+              <br />
+              NestJS, on the other hand, is a progressive framework for building
+              server-side applications using TypeScript. It is heavily inspired
+              by Angular, borrowing many concepts and patterns. NestJS
+              emphasizes modularity and extensibility, promoting the use of
+              decorators, modules, and dependency injection. It provides a
+              powerful CLI tool and supports features like routing, middleware,
+              validation, and database integration. NestJS is designed for
+              scalability and maintainability, making it suitable for complex
+              projects.
+              <br />
+              <br />
+              In simple terms, Express.js is a flexible and easy-to-use
+              framework, while NestJS provides a more structured and scalable
+              approach. The choice between them depends on the requirements of
+              the project. Express.js is often used for smaller applications,
+              while NestJS is preferred for larger and enterprise-level
+              projects.
+            </p>
           </div>
-  
-          <div className="tab-content" style={{ display: activeTab === 2 ? "block" : "none" }}>
-            <div className="mb-8">
-              <h4 className="text-xl font-bold mb-2">Q: What is Express.js? What is NestJS?</h4>
-              <p>
-                Express.js and NestJS are both popular frameworks for building web
-                applications in JavaScript/TypeScript.
-                <br /><br />
-                Express.js is a minimal and flexible web application framework for
-                Node.js. It provides a robust set of features for creating web
-                servers and APIs. Express.js allows developers to handle HTTP
-                requests and responses, define routes, handle middleware, and
-                implement various web application functionalities. It has a simple
-                and intuitive API that makes it easy to build scalable and
-                efficient web applications. Express.js is known for its lightweight
-                nature and extensive ecosystem of middleware and plugins, enabling
-                developers to add additional functionality as needed.
-                <br /><br />
-                NestJS, on the other hand, is a progressive Node.js framework for
-                building scalable and maintainable server-side applications. It is
-                built with TypeScript and heavily inspired by Angular, borrowing
-                many concepts and architectural patterns. NestJS focuses on
-                modularity and extensibility, promoting the use of decorators,
-                modules, and dependency injection to structure applications in a
-                clean and organized manner. It provides a powerful CLI (Command Line
-                Interface) tool and supports various features like routing,
-                middleware, validation, and database integration. NestJS is designed
-                to enable developers to build scalable and enterprise-grade
-                applications, making it a popular choice for complex projects.
-                <br /><br />
-                In summary, Express.js is a lightweight and flexible framework that excels in simplicity and ease of use, while NestJS is a feature-rich framework inspired by Angular, emphasizing modularity and scalability. The choice between them depends on the specific requirements of the project, with Express.js being a great fit for small to medium-sized applications and NestJS providing a more structured and scalable approach for larger and enterprise-level applications.
-              </p>
-            </div>
+        </TabPanel>
+
+        <TabPanel className="tab-panel">
+          <div className="mb-8 p-10">
+            <h4 className="text-2xl mb-6">
+              Q: What is MongoDB aggregate and how does it work?
+            </h4>
+            <p className="text-lg">
+              In MongoDB, the aggregate function is a tool that allows you to
+              perform advanced data processing and analysis on collections of
+              documents. It works by combining multiple operations together in a
+              specific order.
+              <br />
+              <br />
+              Think of it like a pipeline where you have a collection of
+              documents flowing through different stages. Each stage performs a
+              specific task on the documents, such as filtering, grouping,
+              sorting, and transforming data. The output of one stage becomes
+              the input for the next stage, allowing you to perform complex
+              operations on your data.
+              <br />
+              <br />
+              For example, you can start by filtering the documents based on
+              certain criteria using the $match stage. Then, you can group the
+              filtered documents together based on a key and perform
+              aggregations like counting or summing using the $group stage.
+              Next, you can reshape the documents by including or excluding
+              specific fields and creating new computed fields using the
+              $project stage. Finally, you can sort and limit the results using
+              the $sort and $limit stages.
+              <br />
+              <br />
+              By chaining and combining these stages, you can perform complex
+              data manipulations and extract meaningful insights from your data.
+              The aggregate function is especially useful when dealing with
+              large datasets or when you need to perform intricate data analysis
+              that cannot be achieved using simpler queries.
+              <br />
+              <br />
+              In summary, the MongoDB aggregate function allows you to process
+              and analyze your data by applying a series of operations in a
+              pipeline-like fashion. It gives you the flexibility to perform
+              complex data manipulations and derive valuable insights from your
+              collections of documents.
+            </p>
           </div>
-  
-          <div className="tab-content" style={{ display: activeTab === 3 ? "block" : "none" }}>
-            <div>
-              <h4 className="text-xl font-bold mb-2">Q: What is MongoDB aggregate and how does it work?</h4>
-              <p>
-                In MongoDB, the aggregate function is a powerful tool used to perform advanced data processing and analysis on collections of documents. It allows you to combine multiple operations together and process data in a flexible and efficient manner.
-                <br /><br />
-                The aggregate function operates on a collection and takes an array of stages as its input. Each stage represents a specific operation or transformation to be applied to the documents in the collection. The stages are executed in order, with the output of each stage becoming the input for the next stage.
-                <br /><br />
-                Common stages used in the aggregate framework include:
-                <li>$match: Filters the documents based on specified criteria.</li>
-                <li>
-                  $group: Groups documents together based on a specified key and performs
-                  aggregations like counting, summing, averaging, etc. on the grouped data.
-                </li>
-                <li>
-                  $project: Reshapes the documents by including or excluding specific fields
-                  and creating new computed fields.
-                </li>
-                <li>$sort: Orders the documents based on specified fields.</li>
-                <li>$limit: Limits the number of documents returned.</li>
-                <li>$skip: Skips a specified number of documents.</li>
-                By chaining and combining these stages, you can perform complex
-                operations like grouping, filtering, sorting, and transforming data in a
-                single query. This allows you to retrieve specific subsets of data and
-                perform calculations or aggregations on them.
-                <br />
-                The aggregate function is particularly useful when dealing with large
-                datasets or when you need to perform complex data manipulations that
-                cannot be achieved using simpler query methods. It provides a flexible
-                and expressive way to analyze and extract insights from your data.
-                <br />
-                Overall, the MongoDB aggregate function is a powerful tool that enables
-                you to perform advanced data processing and analysis by combining
-                multiple stages of operations on your data. It empowers you to manipulate
-                and transform your data in a flexible and efficient manner, opening up a
-                wide range of possibilities for data analysis and exploration.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      <div className="divider"></div> 
-      </div>
+        </TabPanel>
+      </Tabs>
+    </div>
   );
 };
 

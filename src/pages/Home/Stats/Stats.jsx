@@ -9,11 +9,11 @@ const Stats = () => {
 
   return (
     <div className="my-20">
-      <h2 className="text-3xl text-center mb-8" style={{ color: "#5B5F8E" }}>
+      <h2 className="text-3xl text-center md:mb-8" style={{ color: "#5B5F8E" }}>
         Toyland Insights
       </h2>
-      <div className="flex justify-center my-6">
-        <div className="stats shadow-lg bg-white rounded-lg p-6 space-y-6">
+      <div className="flex flex-col md:flex-row justify-center md:my-6">
+        <div className="stats shadow-lg bg-white rounded-lg p-6 space-y-6 md:flex md:space-y-0 md:space-x-6">
           <div className="stat space-y-2">
             <div className="stat-figure text-[#5B5F8E]">
               <svg
@@ -37,7 +37,7 @@ const Stats = () => {
             <div className="stat-desc">12% more than last month</div>
           </div>
 
-          <div className="stat">
+          <div className="stat space-y-2">
             <div className="stat-figure text-[#F078B1]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +60,7 @@ const Stats = () => {
             <div className="stat-desc">97% positive feedback</div>
           </div>
 
-          <div className="stat">
+          <div className="stat space-y-2">
             <div className="stat-figure text-secondary"></div>
             <div className="stat-value">
               <CountUp end={10000} duration={2} separator="," />

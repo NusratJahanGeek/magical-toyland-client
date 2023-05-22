@@ -30,16 +30,16 @@ const Toys = ({ toys }) => {
         </TabList>
 
         <TabPanel className="tab-panel">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             {toys
               .filter((toy) => toy.category === 'Disney Princesses')
               .map((toy) => (
                 <div key={toy._id} className="flex items-center toy-item">
-                  <div className="w-1/2">
+                  <div className="w-full md:w-1/2">
                     <img src={toy.picture} alt={`Toy ${toy._id}`} className="w-full h-auto" />
                   </div>
-                  <div className="w-1/2 space-y-2">
-                    <h3 className="text-lg toy-name">{toy.name}</h3>
+                  <div className="w-full md:w-1/2 space-y-2">
+                    <h3 className="text-lg md:text-xl toy-name">{toy.name}</h3>
                     <p className="toy-price font-bold color-[#5B5F8E]">
                       <FontAwesomeIcon icon={faDollarSign} />
                       &nbsp;{toy.price}
@@ -63,16 +63,16 @@ const Toys = ({ toys }) => {
         </TabPanel>
 
         <TabPanel className="tab-panel">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             {toys
               .filter((toy) => toy.category === 'Disney Fairies')
               .map((toy) => (
                 <div key={toy._id} className="flex items-center toy-item">
-                  <div className="w-1/2">
+                  <div className="w-full md:w-1/2">
                     <img src={toy.picture} alt={`Toy ${toy._id}`} className="w-full h-auto" />
                   </div>
-                  <div className="w-1/2 space-y-2">
-                    <h3 className="text-lg toy-name">{toy.name}</h3>
+                  <div className="w-full md:w-1/2 space-y-2">
+                    <h3 className="text-lg md:text-xl toy-name">{toy.name}</h3>
                     <p className="toy-price font-bold color-[#5B5F8E]">
                       <FontAwesomeIcon icon={faDollarSign} />
                       &nbsp;{toy.price}
@@ -96,16 +96,16 @@ const Toys = ({ toys }) => {
         </TabPanel>
 
         <TabPanel className="tab-panel">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             {toys
               .filter((toy) => toy.category === 'Disney Frozen')
               .map((toy) => (
                 <div key={toy._id} className="flex items-center toy-item">
-                  <div className="w-1/2">
+                  <div className="w-full md:w-1/2">
                     <img src={toy.picture} alt={`Toy ${toy._id}`} className="w-full h-auto" />
                   </div>
-                  <div className="w-1/2 space-y-2">
-                    <h3 className="text-lg toy-name">{toy.name}</h3>
+                  <div className="w-full md:w-1/2 space-y-2">
+                    <h3 className="text-lg md:text-xl toy-name">{toy.name}</h3>
                     <p className="toy-price font-bold color-[#5B5F8E]">
                       <FontAwesomeIcon icon={faDollarSign} />
                       &nbsp;{toy.price}

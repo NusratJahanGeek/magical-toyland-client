@@ -1,12 +1,14 @@
 .carousel-image {
-  height: 300px; /* Set the desired height */
-  object-fit: cover; /* Adjust how the image is displayed */
-  border-radius: 8px; /* Add rounded corners */
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
 }
+
 
 .bg-shape {
   position: relative;
 }
+
 
 .shape-overlay {
   position: absolute;
@@ -19,3 +21,5 @@
   background-size: cover;
   opacity: 0.4; /* Adjust the opacity as desired */
 }
+
+

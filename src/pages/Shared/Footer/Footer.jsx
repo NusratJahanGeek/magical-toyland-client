@@ -1,13 +1,11 @@
-import logo from "../../../assets/Magical ToyLand Footer.png";
-
 const Footer = () => {
   return (
-    <footer className="footer footer-center p-8 text-base-content rounded bg-white">
-      <div className="divider text-[#5B5F8E] text-2xl font-semibold">
+    <footer className="footer footer-center p-4 text-sm-content rounded bg-white">
+      <div className="divider text-[#5B5F8E] text-xl font-semibold">
         <h3>Magical ToyLand</h3>
       </div>
-      <div className="flex items-center justify-end pt-6 space-x-4 text-[#5B5F8E]">
-        <h2 className="text-lg">Follow Us:</h2>
+      <div className="flex items-center justify-center pt-6 text-[#5B5F8E]">
+        <h2 className="text-base">Follow Us:</h2>
         <a href="https://www.twitter.com/">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -42,18 +40,18 @@ const Footer = () => {
           </svg>
         </a>
       </div>
-      <div>
-        <h2 className="text-lg text-[#5B5F8E] underline">Contact Details</h2>
-      <div className="flex items-center justify-end space-x-4">
-        <p className="text-black text-base">Email: info@magicaltoyland.com</p>
-        <p className="text-black text-base">Phone: +1 123-456-7890</p>
+      <div className="text-[#5B5F8E]">
+        <h2 className="text-base underline">Contact Details</h2>
+        <div className="flex flex-col items-center space-y-2">
+          <p className="text-black text-sm">Email: info@magicaltoyland.com</p>
+          <p className="text-black text-sm">Phone: +1 123-456-7890</p>
+        </div>
+        <p className="text-black text-sm">
+          Address: 123 Playtime Street, Imagination City, Toyland, 12345
+        </p>
       </div>
-      <p className="text-black text-base">
-        Address: 123 Playtime Street, Imagination City, Toyland, 12345
-      </p>
       <div className="text-center mt-4 text-black">
         <p>© 2023 - All rights reserved by Magical Toyland</p>
-      </div>
       </div>
     </footer>
   );

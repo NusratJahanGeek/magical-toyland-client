@@ -8,9 +8,9 @@ const Testimonials = () => {
   }, []);
 
     return (
-        <div className='bg-[#FFEBDB] px-12 py-28'>
-          <h2 className="text-3xl text-center mb-12" style={{ color: "#000" }}>Magical Toy Tales: Happy Customer Stories!</h2>
-          <div data-aos="fade-up" data-aos-anchor=".other-element" className="flex items-center">
+        <div className='bg-[#FFEBDB] px-4 py-16 md:px-12 md:py-28'>
+          <h2 className="text-xl mb-8 md:text-3xl text-center md:mb-12" style={{ color: "#000" }}>Magical Toy Tales: Happy Customer Stories!</h2>
+          <div data-aos="fade-up" data-aos-anchor=".other-element" className="flex flex-col md:flex-row items-center">
             <div className="chat chat-start aos-animate" data-aos="slide-right"
                 data-aos-delay="100">
   <div className="chat-image avatar">

@@ -4,3 +4,9 @@
     background-size: cover;
   }
   
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .custom-bg {
+    background-image: none; /* Remove the background image */
+  }
+}
