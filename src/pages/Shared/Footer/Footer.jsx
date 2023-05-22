@@ -2,18 +2,18 @@ import logo from '../../../assets/Magical ToyLand Footer.png'
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
+    <footer className="footer footer-center p-10 text-base-content rounded bg-white">
   <div className="grid grid-cols-3 gap-4">
     <div className="flex items-center justify-center">
       <img src={logo} alt="" width="150" height="150" />
     </div>
     <div className="text-left space-y-2">
-      <h2 className="text-2xl font-bold">Contact Details</h2>
-      <p>Email: info@magicaltoyland.com</p>
-      <p>Phone: +1 123-456-7890</p>
-      <p>Address: 123 Playtime Street, Imagination City, Toyland, 12345</p>
+      <h2 className="text-2xl font-bold text-[#5B5F8E]">Contact Details</h2>
+      <p className='text-black'>Email: info@magicaltoyland.com</p>
+      <p className='text-black'>Phone: +1 123-456-7890</p>
+      <p className='text-black'>Address: 123 Playtime Street, Imagination City, Toyland, 12345</p>
     </div>
-    <div className="flex items-center justify-end space-x-4">
+    <div className="flex items-center justify-end space-x-4 text-[#5B5F8E]">
       <h2 className="text-lg font-bold">Follow Us:</h2>
       <a href="https://www.twitter.com/">
         <svg
@@ -50,7 +50,7 @@ const Footer = () => {
       </a>
     </div>
   </div>
-  <div className="text-center mt-4">
+  <div className="text-center mt-4 text-black">
     <p>© 2023 - All rights reserved by Magical Toyland</p>
   </div>
 </footer>

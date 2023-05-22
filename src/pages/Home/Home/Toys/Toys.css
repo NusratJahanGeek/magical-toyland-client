@@ -1,0 +1,35 @@
+.custom-tab {
+    color: black;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: 1px solid #5b5f8e;
+  }
+  
+  .custom-tab:hover {
+    background-color: #ffebdb;
+    color: black;
+    cursor: pointer;
+  }
+  
+  .custom-tab.react-tabs__tab--selected {
+    background-color: #5b5f8e;
+    color: white;
+  }
+  
+  .custom-tab.react-tabs__tab--selected:hover {
+    background-color: #ffebdb;
+    color: black;
+  }
+  
+  .custom-rating {
+    display: inline-block;
+  }
+  
+  .custom-rating .empty {
+    color: #ccc; /* Color for empty star icons */
+  }
+  
+  .custom-rating .full {
+    color: #f8b300; /* Color for full star icons */
+  }
+  
