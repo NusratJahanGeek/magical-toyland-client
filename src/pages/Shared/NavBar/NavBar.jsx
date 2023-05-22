@@ -19,20 +19,25 @@ const NavBar = () => {
   // Function to capitalize all words and remove hyphen
   const capitalizeAllWords = (str) => {
     const route = str.split("/")[0]; // Get the route before '/'
-    return route
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
+    if (route === "") {
+      return "Magical Toyland";
+    } else {
+      const pageName = route
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+      return `Magical Toyland | ${pageName}`;
+    }
   };
+  
 
 
   return (
     <div className="navbar bg-base-100">
       <Helmet>
-      <title>
-        Magical Toyland | {capitalizeAllWords(activeRoute.slice(1))}
-      </title>
+      <title>{capitalizeAllWords(activeRoute.slice(1))}</title>
     </Helmet>
+   
       <div className="navbar-start">
         <div className="dropdown block md:hidden">
           {/* Show only on mobile devices */}
