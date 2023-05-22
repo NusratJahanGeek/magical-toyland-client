@@ -9,21 +9,29 @@ const MyToys = () => {
   const [toys, setToys] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedToy, setSelectedToy] = useState(null);
+  const [sortOrder, setSortOrder] = useState("asc");
 
-  const url = `https://magical-toyland-server.vercel.app/toys/?email=${user?.email}`;
+  const url = `http://localhost:5000/toys/?email=${user?.email}`;
+
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setToys(data))
-      .catch((error) => console.error("Error fetching toys:", error));
-  }, [url]);
+    fetchToys();
+  }, [url, sortOrder]);
 
   const fetchToys = () => {
-    fetch(url)
+    const sortedUrl = `${url}&sort=price:${sortOrder === "asc" ? 1 : -1}`;
+    fetch(sortedUrl)
       .then((res) => res.json())
       .then((data) => setToys(data))
-      .catch((error) => console.error("Error fetching toys:", error));
+      .catch((error) => console.log("Error fetching toys:", error));
   };
+
+  
+
+  const handleSort = () => {
+    const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
+    setSortOrder(newSortOrder);
+  };
+
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -44,7 +52,6 @@ const MyToys = () => {
             console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your toy has been deleted.", "success");
-              // Remove the deleted toy from the state
               setToys((prevToys) => prevToys.filter((toy) => toy._id !== _id));
             }
           })
@@ -64,13 +71,9 @@ const MyToys = () => {
   };
 
   const handleUpdate = () => {
-    fetchToys(); // Re-fetch toys and update the toy list
-    handleCloseUpdateForm(); // Close the update form
+    fetchToys();
+    handleCloseUpdateForm();
   };
-
-  useEffect(() => {
-    fetchToys(); // Initial fetch of toys
-  }, [url]);
 
   return (
     <div className="my-8 p-4 text-center space-y-5">
@@ -110,7 +113,18 @@ const MyToys = () => {
               <th className="px-4 py-2 border">Seller</th>
               <th className="px-4 py-2 border">Email</th>
               <th className="px-4 py-2 border">Category</th>
-              <th className="px-4 py-2 border">Price</th>
+              <th
+  className="px-4 py-2 border cursor-pointer"
+  onClick={handleSort}
+>
+  Price{" "}
+  {sortOrder === "asc" ? (
+    <span className="text-sm">&#8593;</span>
+  ) : (
+    <span className="text-sm">&#8595;</span>
+  )}
+</th>
+
               <th className="px-4 py-2 border">Rating</th>
               <th className="px-4 py-2 border">Available Qty</th>
               <th className="px-4 py-2 border">Details</th>
@@ -142,21 +156,22 @@ const MyToys = () => {
                 <td className="px-4 py-2 border">{toy.details}</td>
                 <td className="px-4 py-2 border">
                   <div className="btn-group btn-group-vertical space-y-3">
-                    <Link to={`/toy/${toy._id}`}>
-                      <button className="btn btn-custom">View Details</button>
+                    <Link to="#">
+                      <button
+                        onClick={() => handleOpenUpdateForm(toy)}
+                        className="btn btn-custom"
+                      >
+                        Update
+                      </button>
                     </Link>
-                    <Link><button
-                      onClick={() => handleOpenUpdateForm(toy)}
-                      className="btn btn-custom"
-                    >
-                      Update
-                    </button></Link>
-                    <Link><button
-                      onClick={() => handleDelete(toy._id)}
-                      className="btn btn-custom"
-                    >
-                      Delete
-                    </button></Link>
+                    <Link to="#">
+                      <button
+                        onClick={() => handleDelete(toy._id)}
+                        className="btn btn-custom"
+                      >
+                        Delete
+                      </button>
+                    </Link>
                   </div>
                 </td>
               </tr>
