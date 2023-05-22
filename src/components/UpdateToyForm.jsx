@@ -1,8 +1,6 @@
-import { useState } from "react";
 import Swal from "sweetalert2";
 
-const UpdateToyForm = ({ _id, toy, onUpdate }) => {
-  const [updatedToy, setUpdatedToy] = useState(toy);
+const UpdateToyForm = ({ toy, onUpdate }) => {
 
   const handleUpdateToy = (event) => {
     event.preventDefault();
@@ -17,7 +15,7 @@ const UpdateToyForm = ({ _id, toy, onUpdate }) => {
       price,
     };
 
-    fetch(`http://localhost:5000/toys/${_id}`, {
+    fetch(`http://localhost:5000/toys/${toy._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -32,9 +30,10 @@ const UpdateToyForm = ({ _id, toy, onUpdate }) => {
             title: "Success!",
             text: "Toy Updated Successfully",
             icon: "success",
+            confirmButtonColor: "#5B5F8E",
             confirmButtonText: "Cool",
           });
-          onUpdate(); // Call the callback to close the modal
+          onUpdate(); // Call the callback to update the toy list in the parent component
         } else {
           Swal.fire("Error!", "Failed to update toy.", "error");
         }

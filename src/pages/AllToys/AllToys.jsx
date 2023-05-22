@@ -51,24 +51,24 @@ const AllToys = () => {
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="bg-gray-200">
-              <th className="px-4 py-2">Seller</th>
-              <th className="px-4 py-2">Toy Name</th>
-              <th className="px-4 py-2">Category</th>
-              <th className="px-4 py-2">Price</th>
-              <th className="px-4 py-2">Available Qty</th>
-              <th className="px-4 py-2">Action</th>
+          <tr className="bg-[#F4BBD0]">
+              <th className="px-4 py-2 border">Seller</th>
+              <th className="px-4 py-2 border">Toy Name</th>
+              <th className="px-4 py-2 border">Category</th>
+              <th className="px-4 py-2 border">Price</th>
+              <th className="px-4 py-2 border">Available Qty</th>
+              <th className="px-4 py-2 border">Action</th>
             </tr>
           </thead>
           <tbody>
             {filteredToys.map((toy) => (
               <tr key={toy.id}>
-                <td className="px-4 py-2">{toy.seller || "N/A"}</td>
-                <td className="px-4 py-2">{toy.name}</td>
-                <td className="px-4 py-2">{toy.category}</td>
-                <td className="px-4 py-2">${toy.price}</td>
-                <td className="px-4 py-2">{toy.quantity}</td>
-                <td className="px-4 py-2">
+                <td className="px-4 py-2 border">{toy.seller || "N/A"}</td>
+                <td className="px-4 py-2 border">{toy.name}</td>
+                <td className="px-4 py-2 border">{toy.category}</td>
+                <td className="px-4 py-2 border">${toy.price}</td>
+                <td className="px-4 py-2 border">{toy.quantity}</td>
+                <td className="px-4 py-2 border">
                   <Link to={`/toy/${toy._id}`}>
                     <button className="btn btn-custom rounded-md px-4 py-2">
                       View Details

@@ -10,7 +10,7 @@ const MyToys = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedToy, setSelectedToy] = useState(null);
 
-  const url = `http://localhost:5000/toys/?email=${user?.email}`;
+  const url = `https://magical-toyland-server.vercel.app/toys/?email=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -18,18 +18,25 @@ const MyToys = () => {
       .catch((error) => console.error("Error fetching toys:", error));
   }, [url]);
 
+  const fetchToys = () => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setToys(data))
+      .catch((error) => console.error("Error fetching toys:", error));
+  };
+
   const handleDelete = (_id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#5B5F8E",
+      cancelButtonColor: "#F078B1",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/toys/${_id}`, {
+        fetch(`https://magical-toyland-server.vercel.app/toys/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -56,6 +63,15 @@ const MyToys = () => {
     setIsOpen(false);
   };
 
+  const handleUpdate = () => {
+    fetchToys(); // Re-fetch toys and update the toy list
+    handleCloseUpdateForm(); // Close the update form
+  };
+
+  useEffect(() => {
+    fetchToys(); // Initial fetch of toys
+  }, [url]);
+
   return (
     <div className="my-8 p-4 text-center space-y-5">
       <h1 className="text-2xl font-bold mb-4">My Toys: {toys.length}</h1>
@@ -67,7 +83,10 @@ const MyToys = () => {
               <div className="p-6">
                 <UpdateToyForm
                   toy={selectedToy}
-                  onUpdate={handleCloseUpdateForm}
+                  onUpdate={() => {
+                    handleCloseUpdateForm();
+                    handleUpdate();
+                  }}
                 />
               </div>
               <div className="px-4 py-3 bg-gray-50 sm:px-6 sm:flex sm:flex-row-reverse">
@@ -122,22 +141,22 @@ const MyToys = () => {
                 <td className="px-4 py-2 border">{toy.quantity}</td>
                 <td className="px-4 py-2 border">{toy.details}</td>
                 <td className="px-4 py-2 border">
-                  <div className="btn-group btn-group-vertical">
+                  <div className="btn-group btn-group-vertical space-y-3">
                     <Link to={`/toy/${toy._id}`}>
                       <button className="btn btn-custom">View Details</button>
                     </Link>
-                    <button
+                    <Link><button
                       onClick={() => handleOpenUpdateForm(toy)}
                       className="btn btn-custom"
                     >
                       Update
-                    </button>
-                    <button
+                    </button></Link>
+                    <Link><button
                       onClick={() => handleDelete(toy._id)}
                       className="btn btn-custom"
                     >
                       Delete
-                    </button>
+                    </button></Link>
                   </div>
                 </td>
               </tr>

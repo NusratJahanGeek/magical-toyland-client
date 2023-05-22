@@ -45,6 +45,7 @@ const AddToy = () => {
             title: "Success!",
             text: "Toy Added Successfully",
             icon: "success",
+            confirmButtonColor: "#5B5F8E",
             confirmButtonText: "Cool",
           });
         }
