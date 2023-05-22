@@ -9,7 +9,7 @@ const ToyDetails = () => {
     <div className="bg-white pt-20 flex justify-center items-center custom-bg">
       <div className="container mx-auto px-4">
       <h2 className="text-3xl font-bold mb-8 text-center text-[#5B5F8E]">
-            Toy Details: {singleToy.name}
+            Toy Name: {singleToy.name}
           </h2>
         <div className="flex flex-col md:flex-row justify-center items-stretch gap-0 md:p-8">
           <div className="w-full md:w-1/3">
@@ -34,7 +34,7 @@ const ToyDetails = () => {
                 <span className="font-semibold">Rating:</span> {singleToy.rating}
               </p>
               <p className="text-gray-700 mb-4">
-                <span className="font-semibold">Quantity:</span> {singleToy.quantity}
+                <span className="font-semibold">Available Quantity:</span> {singleToy.quantity}
               </p>
               <p className="text-gray-700 leading-8">
                 <span className="font-semibold">Details:</span> {singleToy.details}

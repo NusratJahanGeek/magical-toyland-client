@@ -15,7 +15,7 @@ const UpdateToyForm = ({ toy, onUpdate }) => {
       price,
     };
 
-    fetch(`http://localhost:5000/toys/${toy._id}`, {
+    fetch(`https://magical-toyland-server.vercel.app/toys/${toy._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

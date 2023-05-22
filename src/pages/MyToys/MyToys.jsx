@@ -13,21 +13,19 @@ const MyToys = () => {
   const url = `http://localhost:5000/toys/?email=${user?.email}`;
 
   useEffect(() => {
-    fetchToys();
-  }, [url, sortOrder]);
-
-  const fetchToys = () => {
     const sortedUrl = `${url}&sort=price:${sortOrder === "asc" ? 1 : -1}`;
     fetch(sortedUrl)
       .then((res) => res.json())
       .then((data) => setToys(data))
       .catch((error) => console.log("Error fetching toys:", error));
-  };
+  }, [url, sortOrder]);
+
 
   const handleSort = () => {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
     setSortOrder(newSortOrder);
   };
+
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -40,7 +38,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://magical-toyland-server.vercel.app/toys/${_id}`, {
+        fetch(`http://localhost:5000/toys/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -67,7 +65,6 @@ const MyToys = () => {
   };
 
   const handleUpdate = () => {
-    fetchToys();
     handleCloseUpdateForm();
   };
 
