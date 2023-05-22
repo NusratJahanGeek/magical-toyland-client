@@ -8,15 +8,15 @@ const Gallery = () => {
     AOS.init(); // Initialize AOS library
   }, []);
 
-    return (
-      <div data-aos="fade-up" data-aos-anchor=".other-element" className="bg-shape">
-    <div className="shape-overlay"></div>
-    <div className='space-y-12 py-28 px-12'>
-    <h2 className="text-3xl text-center mb-8 text-black">Discover All The Magical Princesses!</h2>
-      <div className="carousel carousel-center rounded-box">
+  return (
+    <div data-aos="fade-up" data-aos-anchor=".other-element" className="bg-shape">
+      <div className="shape-overlay"></div>
+      <div className="gallery-container">
+        <h2 className="gallery-title">Discover All The Magical Princesses!</h2>
+        <div className="carousel">
           <div className="carousel-item aos-animate" data-aos="flip-right" data-aos-delay="100">
-              <img className="carousel-image" src="https://www.marcieinmommyland.com/wp-content/uploads/2019/09/Meeting-Princesses-at-Walt-Disney-World-4-scaled.jpg" alt="Princess 1" />
-          </div> 
+            <img className="carousel-image" src="https://www.marcieinmommyland.com/wp-content/uploads/2019/09/Meeting-Princesses-at-Walt-Disney-World-4-scaled.jpg" alt="Princess 1" />
+          </div>
           <div className="carousel-item aos-animate" data-aos="flip-right" data-aos-delay="100">
               <img className="carousel-image" src="https://www.familychoiceawards.com/wp-content/uploads/2014/02/elsaanna.jpg" alt="Princess 2" />
           </div> 

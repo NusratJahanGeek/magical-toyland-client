@@ -58,7 +58,7 @@ const AddToy = () => {
   };
 
   return (
-    <div className="py-12 px-4 md:px-12">
+    <div className="py-12 px-4 md:px-32">
       <h2 className="text-2xl font-bold text-center mb-6">Add Toy</h2>
       <form onSubmit={handleAddToy}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -151,13 +151,13 @@ const AddToy = () => {
             <textarea
               name="detail" 
               placeholder="Detail Description"
-              className="input input-bordered w-full h-40 resize-none"
+              className="input input-bordered w-full h-32 resize-none"
               rows="4" required
             ></textarea>
           </div>
         </div>
         <input
-          className="btn btn-custom block px-6 py-2 mt-6 mx-auto font-semibold rounded-md cursor-pointer"
+          className="btn w-1/4 block mt-8 mx-auto font-semibold rounded-md cursor-pointer"
           type="submit"
           value="Add Toy"
         />

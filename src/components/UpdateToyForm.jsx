@@ -88,7 +88,7 @@ const UpdateToyForm = ({ toy, onUpdate }) => {
           </div>
         </div>
         <input
-          className="btn btn-custom block px-6 py-2 mt-6 mx-auto font-semibold rounded-md cursor-pointer"
+          className="btn block px-6 py-2 mt-6 mx-auto font-semibold rounded-md cursor-pointer"
           type="submit"
           value="Update Toy"
         />

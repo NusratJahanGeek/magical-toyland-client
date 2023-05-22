@@ -204,7 +204,7 @@ const NavBar = () => {
             </Link>
           ) : null}
           {user ? (
-            <button onClick={handleLogOut} className="btn btn-custom">
+            <button onClick={handleLogOut} className="btn">
               LogOut
             </button>
           ) : (
@@ -272,7 +272,7 @@ const NavBar = () => {
             </Link>
           ) : null}
           {user ? (
-            <button onClick={handleLogOut} className="btn btn-custom">
+            <button onClick={handleLogOut} className="btn">
               LogOut
             </button>
           ) : (

@@ -1,14 +1,25 @@
-.carousel-image {
-  height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
+.carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem; /* Add some bottom padding to prevent the scrollable bar from overlapping content */
 }
 
+.carousel-item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.carousel-image {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  margin-right: 1rem;
+  border-radius: 8px;
+}
 
 .bg-shape {
   position: relative;
 }
-
 
 .shape-overlay {
   position: absolute;
@@ -22,4 +33,39 @@
   opacity: 0.4; /* Adjust the opacity as desired */
 }
 
+.gallery-container {
+  padding: 2rem;
+  max-width: 100%; /* Add a maximum width to prevent content from overflowing */
+  margin: 0 auto; /* Center the container horizontally */
+}
 
+.gallery-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 2rem;
+}
+
+/* Media Query for Mobile */
+@media screen and (max-width: 767px) {
+  .carousel-item {
+    margin-right: 0.5rem;
+  }
+}
+
+/* Media Query for Desktop */
+@media screen and (min-width: 768px) {
+  .gallery-container {
+    padding: 4rem;
+    max-width: 1200px; /* Adjust the maximum width as desired */
+  }
+
+  .gallery-title {
+    font-size: 2rem;
+  }
+
+  .carousel-image {
+    max-width: 600px;
+  }
+}

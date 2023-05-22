@@ -88,7 +88,7 @@ const MyToys = () => {
               <div className="px-4 py-3 bg-gray-50 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button
                   onClick={handleCloseUpdateForm}
-                  className="btn btn-custom"
+                  className="btn"
                 >
                   Close
                 </button>
@@ -151,13 +151,13 @@ const MyToys = () => {
                   <div className="btn-group btn-group-vertical space-y-3">
                     <button
                       onClick={() => handleOpenUpdateForm(toy)}
-                      className="btn btn-custom"
+                      className="btn"
                     >
                       Update
                     </button>
                     <button
                       onClick={() => handleDelete(toy._id)}
-                      className="btn btn-custom"
+                      className="btn"
                     >
                       Delete
                     </button>

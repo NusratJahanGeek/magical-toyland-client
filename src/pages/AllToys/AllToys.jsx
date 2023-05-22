@@ -70,7 +70,7 @@ const AllToys = () => {
         />
         <button
           type="submit"
-          className="btn btn-custom rounded-md px-8 py-0 mb-5"
+          className="btn rounded-md px-8 py-0 mb-5"
         >
           Search
         </button>
@@ -97,7 +97,7 @@ const AllToys = () => {
                 <td className="px-4 py-2 border">{toy.quantity}</td>
                 <td className="px-4 py-2 border">
                   <Link to={`/toy/${toy._id}`}>
-                    <button className="btn btn-custom rounded-md px-4 py-2">
+                    <button className="btn rounded-md px-4 py-2">
                       View Details
                     </button>
                   </Link>
@@ -109,14 +109,14 @@ const AllToys = () => {
       </div>
       <div className="my-4">
         <button
-          className="btn btn-custom rounded-md px-4 py-2"
+          className="btn rounded-md px-4 py-2"
           onClick={handleClickPrevious}
           disabled={currentPage === 1}
         >
           Previous
         </button>
         <button
-          className="btn btn-custom rounded-md px-4 py-2 ml-2"
+          className="btn rounded-md px-4 py-2 ml-2"
           onClick={handleClickNext}
           disabled={currentPage === totalPages}
         >

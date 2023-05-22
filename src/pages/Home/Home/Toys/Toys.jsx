@@ -95,7 +95,7 @@ const Toys = ({ toys }) => {
                         }
                       }}
                     >
-                      <button type="submit" className="btn btn-custom mt-3">
+                      <button type="submit" className="btn mt-3">
                         View Details
                       </button>
                     </form>
@@ -151,7 +151,7 @@ const Toys = ({ toys }) => {
                         }
                       }}
                     >
-                      <button type="submit" className="btn btn-custom mt-3">
+                      <button type="submit" className="btn mt-3">
                         View Details
                       </button>
                     </form>
@@ -207,7 +207,7 @@ const Toys = ({ toys }) => {
                         }
                       }}
                     >
-                      <button type="submit" className="btn btn-custom mt-3">
+                      <button type="submit" className="btn mt-3">
                         View Details
                       </button>
                     </form>

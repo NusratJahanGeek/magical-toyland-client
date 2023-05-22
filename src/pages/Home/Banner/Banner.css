@@ -1,12 +1,23 @@
-.btn:hover {
-    background-color: #FFEBDB;
-  }
-.btn-custom{
-  background-color: #FFEBDB;
-  color: #000;
-}
-.center {
+
+.button-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #ffebdb;
+  color: #000000;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #5B5F8E;
+  color: #fff;
+  
 }
