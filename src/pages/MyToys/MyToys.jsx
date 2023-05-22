@@ -10,7 +10,7 @@ const MyToys = () => {
   const [selectedToy, setSelectedToy] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
 
-  const url = `http://localhost:5000/toys/?email=${user?.email}`;
+  const url = `https://magical-toyland-server.vercel.app/toys/?email=${user?.email}`;
 
   useEffect(() => {
     const sortedUrl = `${url}&sort=price:${sortOrder === "asc" ? 1 : -1}`;
@@ -38,7 +38,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/toys/${_id}`, {
+        fetch(`https://magical-toyland-server.vercel.app/toys/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
