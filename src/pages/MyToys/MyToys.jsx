@@ -25,13 +25,10 @@ const MyToys = () => {
       .catch((error) => console.log("Error fetching toys:", error));
   };
 
-  
-
   const handleSort = () => {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
     setSortOrder(newSortOrder);
   };
-
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -114,16 +111,16 @@ const MyToys = () => {
               <th className="px-4 py-2 border">Email</th>
               <th className="px-4 py-2 border">Category</th>
               <th
-  className="px-4 py-2 border cursor-pointer"
-  onClick={handleSort}
->
-  Price{" "}
-  {sortOrder === "asc" ? (
-    <span className="text-sm">&#8593;</span>
-  ) : (
-    <span className="text-sm">&#8595;</span>
-  )}
-</th>
+                className="px-4 py-2 border cursor-pointer"
+                onClick={handleSort}
+              >
+                Price{" "}
+                {sortOrder === "asc" ? (
+                  <span className="text-sm">&#8593;</span>
+                ) : (
+                  <span className="text-sm">&#8595;</span>
+                )}
+              </th>
 
               <th className="px-4 py-2 border">Rating</th>
               <th className="px-4 py-2 border">Available Qty</th>
@@ -156,22 +153,18 @@ const MyToys = () => {
                 <td className="px-4 py-2 border">{toy.details}</td>
                 <td className="px-4 py-2 border">
                   <div className="btn-group btn-group-vertical space-y-3">
-                    <Link to="#">
-                      <button
-                        onClick={() => handleOpenUpdateForm(toy)}
-                        className="btn btn-custom"
-                      >
-                        Update
-                      </button>
-                    </Link>
-                    <Link to="#">
-                      <button
-                        onClick={() => handleDelete(toy._id)}
-                        className="btn btn-custom"
-                      >
-                        Delete
-                      </button>
-                    </Link>
+                    <button
+                      onClick={() => handleOpenUpdateForm(toy)}
+                      className="btn btn-custom"
+                    >
+                      Update
+                    </button>
+                    <button
+                      onClick={() => handleDelete(toy._id)}
+                      className="btn btn-custom"
+                    >
+                      Delete
+                    </button>
                   </div>
                 </td>
               </tr>

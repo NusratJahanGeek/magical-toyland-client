@@ -18,7 +18,7 @@ const Testimonials = () => {
       <img src="https://www.shutterstock.com/image-photo/portrait-mature-business-woman-smiling-260nw-1593894763.jpg" alt="User 1" />
     </div>
   </div>
-  <div className="chat-bubble bg-[#F4BBD0] text-black">Disney Princess, Disney Fairies, and Disney Frozen dolls galore! Magical Toyland is a paradise for Disney doll collectors like me. The variety and quality are simply enchanting!</div>
+  <div className="chat-bubble bg-[#F4BBD0] text-black">Disney Princesses, Disney Fairies, and Disney Frozen dolls galore! Magical Toyland is a paradise for Disney doll collectors like me. The variety and quality are simply enchanting!</div>
 </div>
 <div className="chat chat-start aos-animate" data-aos="slide-up"
                 data-aos-delay="100">

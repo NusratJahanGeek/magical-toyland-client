@@ -5,15 +5,18 @@ const AllToys = () => {
   const [toys, setToys] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredToys, setFilteredToys] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [toysPerPage] = useState(20);
 
   useEffect(() => {
     fetch("https://magical-toyland-server.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
-        setFilteredToys(data);
+        setFilteredToys(data.slice(0, toysPerPage));
       });
   }, []);
+
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -27,7 +30,31 @@ const AllToys = () => {
     const filtered = toys.filter((toy) =>
       toy.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    setFilteredToys(filtered);
+    setFilteredToys(filtered.slice(0, toysPerPage));
+    setCurrentPage(1);
+  };
+
+  // Pagination logic
+  const totalPages = Math.ceil(toys.length / toysPerPage);
+
+  const handleClickNext = () => {
+    if (currentPage < totalPages) {
+      const nextPage = currentPage + 1;
+      const startIndex = (nextPage - 1) * toysPerPage;
+      const endIndex = Math.min(startIndex + toysPerPage, toys.length);
+      setFilteredToys(toys.slice(startIndex, endIndex));
+      setCurrentPage(nextPage);
+    }
+  };
+
+  const handleClickPrevious = () => {
+    if (currentPage > 1) {
+      const previousPage = currentPage - 1;
+      const startIndex = (previousPage - 1) * toysPerPage;
+      const endIndex = Math.min(startIndex + toysPerPage, toys.length);
+      setFilteredToys(toys.slice(startIndex, endIndex));
+      setCurrentPage(previousPage);
+    }
   };
 
   return (
@@ -79,6 +106,22 @@ const AllToys = () => {
             ))}
           </tbody>
         </table>
+      </div>
+      <div className="my-4">
+        <button
+          className="btn btn-custom rounded-md px-4 py-2"
+          onClick={handleClickPrevious}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <button
+          className="btn btn-custom rounded-md px-4 py-2 ml-2"
+          onClick={handleClickNext}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const AddToy = () => {
+  const { user } = useContext(AuthContext);
+
   const handleAddToy = (event) => {
     event.preventDefault();
 
@@ -64,7 +68,7 @@ const AddToy = () => {
               type="text"
               name="picture"
               placeholder="Picture URL"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full" required
             />
           </div>
           <div>
@@ -73,7 +77,7 @@ const AddToy = () => {
               type="text"
               name="name"
               placeholder="Toy Name"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full" required
             />
           </div>
           <div>
@@ -81,8 +85,9 @@ const AddToy = () => {
             <input
               type="text"
               name="seller"
+              defaultValue={user.displayName}
               placeholder="Seller Name"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full" required
             />
           </div>
           <div>
@@ -90,8 +95,9 @@ const AddToy = () => {
             <input
               type="email"
               name="email"
+              defaultValue={user.email}
               placeholder="Seller Email"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full" required
             />
           </div>
           <div>
@@ -99,14 +105,14 @@ const AddToy = () => {
             <select
               name="category"
               className="input input-bordered w-full"
-              defaultValue="Disney Pricess" 
+              defaultValue="Disney Pricesses"
             >
               <option value="" disabled>
                 Select a category
               </option>
-              <option value="DisneyPrincess">Disney Princess</option>
-              <option value="DisneyFairies">Disney Fairies</option>
-              <option value="DisneyFrozen">Disney Frozen</option>
+              <option value="Disney Princesses">Disney Princesses</option>
+              <option value="Disney Fairies">Disney Fairies</option>
+              <option value="Disney Frozen">Disney Frozen</option>
             </select>
           </div>
           <div>
@@ -115,7 +121,7 @@ const AddToy = () => {
               type="number"
               name="price"
               placeholder="Price"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full" required
             />
           </div>
           <div>
@@ -135,7 +141,7 @@ const AddToy = () => {
               type="number"
               name="quantity"
               placeholder="Available Quantity"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full" required
             />
           </div>
           <div className="md:col-span-2">
@@ -146,7 +152,7 @@ const AddToy = () => {
               name="detail" 
               placeholder="Detail Description"
               className="input input-bordered w-full h-40 resize-none"
-              rows="4"
+              rows="4" required
             ></textarea>
           </div>
         </div>
