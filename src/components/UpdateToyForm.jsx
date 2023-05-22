@@ -1,13 +1,13 @@
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const UpdateToyForm = ({ toy, onUpdate }) => {
+  const [quantity, setQuantity] = useState(toy.quantity);
+  const [details, setDetails] = useState(toy.details);
+  const [price, setPrice] = useState(toy.price);
 
   const handleUpdateToy = (event) => {
     event.preventDefault();
-    const form = event.target;
-    const quantity = form.quantity.value;
-    const details = form.detail.value;
-    const price = form.price.value;
 
     const updatedData = {
       quantity,
@@ -33,7 +33,7 @@ const UpdateToyForm = ({ toy, onUpdate }) => {
             confirmButtonColor: "#5B5F8E",
             confirmButtonText: "Cool",
           });
-          onUpdate(); // Call the callback to update the toy list in the parent component
+          onUpdate(updatedData); // Call the callback to update the toy list in the parent component
         } else {
           Swal.fire("Error!", "Failed to update toy.", "error");
         }
@@ -56,7 +56,8 @@ const UpdateToyForm = ({ toy, onUpdate }) => {
             <input
               type="number"
               name="price"
-              defaultValue={toy.price}
+              value={price}
+              onChange={(event) => setPrice(event.target.value)}
               placeholder="Price"
               className="input input-bordered w-full"
             />
@@ -69,7 +70,8 @@ const UpdateToyForm = ({ toy, onUpdate }) => {
             <input
               type="number"
               name="quantity"
-              defaultValue={toy.quantity}
+              value={quantity}
+              onChange={(event) => setQuantity(event.target.value)}
               placeholder="Available Quantity"
               className="input input-bordered w-full"
             />
@@ -80,7 +82,8 @@ const UpdateToyForm = ({ toy, onUpdate }) => {
             </label>
             <textarea
               name="detail"
-              defaultValue={toy.details}
+              value={details}
+              onChange={(event) => setDetails(event.target.value)}
               placeholder="Detail Description"
               className="input input-bordered w-full h-40 resize-none"
               rows="4"

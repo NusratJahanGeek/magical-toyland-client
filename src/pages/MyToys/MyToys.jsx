@@ -20,12 +20,10 @@ const MyToys = () => {
       .catch((error) => console.log("Error fetching toys:", error));
   }, [url, sortOrder]);
 
-
   const handleSort = () => {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
     setSortOrder(newSortOrder);
   };
-
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -46,7 +44,9 @@ const MyToys = () => {
             console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your toy has been deleted.", "success");
-              setToys((prevToys) => prevToys.filter((toy) => toy._id !== _id));
+              setToys((prevToys) =>
+                prevToys.filter((toy) => toy._id !== _id)
+              );
             }
           })
           .catch((error) => console.error("Error deleting toy:", error));
@@ -64,7 +64,12 @@ const MyToys = () => {
     setIsOpen(false);
   };
 
-  const handleUpdate = () => {
+  const handleUpdate = (updatedData) => {
+    setToys((prevToys) =>
+      prevToys.map((toy) =>
+        toy._id === selectedToy._id ? { ...toy, ...updatedData } : toy
+      )
+    );
     handleCloseUpdateForm();
   };
 
@@ -77,19 +82,10 @@ const MyToys = () => {
             <div className="fixed inset-0 bg-black opacity-30"></div>
             <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
               <div className="p-6">
-                <UpdateToyForm
-                  toy={selectedToy}
-                  onUpdate={() => {
-                    handleCloseUpdateForm();
-                    handleUpdate();
-                  }}
-                />
+                <UpdateToyForm toy={selectedToy} onUpdate={handleUpdate} />
               </div>
               <div className="px-4 py-3 bg-gray-50 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button
-                  onClick={handleCloseUpdateForm}
-                  className="btn"
-                >
+                <button onClick={handleCloseUpdateForm} className="btn">
                   Close
                 </button>
               </div>
@@ -117,7 +113,6 @@ const MyToys = () => {
                   <span className="text-sm">&#8595;</span>
                 )}
               </th>
-
               <th className="px-4 py-2 border">Rating</th>
               <th className="px-4 py-2 border">Available Qty</th>
               <th className="px-4 py-2 border">Details</th>
