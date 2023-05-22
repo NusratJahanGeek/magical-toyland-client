@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import logo from "../../../assets/Magical ToyLand Footer.png";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
@@ -8,15 +9,30 @@ const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const location = useLocation();
   const activeRoute = location.pathname;
-console.log(user)
+
   const handleLogOut = () => {
     logOut()
       .then()
       .catch((error) => console.log(error));
   };
 
+  // Function to capitalize all words and remove hyphen
+  const capitalizeAllWords = (str) => {
+    const route = str.split("/")[0]; // Get the route before '/'
+    return route
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+
+
   return (
     <div className="navbar bg-base-100">
+      <Helmet>
+      <title>
+        Magical Toyland | {capitalizeAllWords(activeRoute.slice(1))}
+      </title>
+    </Helmet>
       <div className="navbar-start">
         <div className="dropdown block md:hidden">
           {/* Show only on mobile devices */}
@@ -55,14 +71,16 @@ console.log(user)
         <div className="navbar-menu ml-4 space-x-4 hidden md:flex">
           <Link
             to="/"
-            className={`btn btn-ghost ${activeRoute === "/" ? "active" : ""}`}
+            className={`btn btn-ghost ${
+              activeRoute === "/" ? "active text-[#5B5F8E]" : ""
+            }`}
           >
             Home
           </Link>
           <Link
             to="/toys"
             className={`btn btn-ghost ${
-              activeRoute === "/toys" ? "active" : ""
+              activeRoute === "/toys" ? "active text-[#5B5F8E]" : ""
             }`}
           >
             All Toys
@@ -70,7 +88,7 @@ console.log(user)
           <Link
             to="/blogs"
             className={`btn btn-ghost ${
-              activeRoute === "/blogs" ? "active" : ""
+              activeRoute === "/blogs" ? "active text-[#5B5F8E]" : ""
             }`}
           >
             Blogs
@@ -87,7 +105,7 @@ console.log(user)
           <Link
             to="/add-toy"
             className={`btn btn-ghost ${
-              activeRoute === "/add-toy" ? "active" : ""
+              activeRoute === "/add-toy" ? "active text-[#5B5F8E]" : ""
             }`}
           >
             Add A Toy
@@ -97,56 +115,52 @@ console.log(user)
           <Link
             to="/my-toys"
             className={`btn btn-ghost ${
-              activeRoute === "/my-toys" ? "active" : ""
+              activeRoute === "/my-toys" ? "active text-[#5B5F8E]" : ""
             }`}
           >
             My Toys
           </Link>
         )}
         {user ? (
-  <Link
-    to="/my-toys"
-    className="me-4 text-decoration-none text-secondary"
-    title={user.displayName ? user.displayName : ""}
-  >
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        marginRight: "0.5rem",
-      }}
-    >
-      {user.photoURL ? (
-        <div
-          style={{
-            backgroundImage: `url("${user.photoURL}")`,
-            backgroundSize: "cover",
-            borderRadius: "50%",
-            width: "2rem",
-            height: "2rem",
-          }}
-        ></div>
-      ) : (
-        <FaUserCircle
-          style={{ fontSize: "1.5rem", marginRight: "0.5rem" }}
-        />
-      )}
-    </div>
-  </Link>
-) : null}
-
-        {user ? (
-          <button
-            onClick={handleLogOut}
-            className="btn btn-custom"
+          <Link
+            to="/my-toys"
+            className="me-4 text-decoration-none text-secondary"
+            title={user.displayName ? user.displayName : ""}
           >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginRight: "0.5rem",
+              }}
+            >
+              {user.photoURL ? (
+                <div
+                  style={{
+                    backgroundImage: `url("${user.photoURL}")`,
+                    backgroundSize: "cover",
+                    borderRadius: "50%",
+                    width: "2rem",
+                    height: "2rem",
+                  }}
+                ></div>
+              ) : (
+                <FaUserCircle
+                  style={{ fontSize: "1.5rem", marginRight: "0.5rem" }}
+                />
+              )}
+            </div>
+          </Link>
+        ) : null}
+        {user ? (
+          <button onClick={handleLogOut} className="btn btn-custom">
             LogOut
           </button>
         ) : (
           <Link
             to="/login"
             className={`btn btn-ghost ${
-              activeRoute === "/login" ? "active" : ""
+              activeRoute === "/login" ? "active text-[#5B5F8E]" : ""
             }`}
           >
             Login
