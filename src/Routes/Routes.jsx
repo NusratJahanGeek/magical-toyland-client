@@ -64,7 +64,7 @@ const router = createBrowserRouter([
             {
                 path: ':id',
                 element: 
-                    <ToyDetails></ToyDetails>,
+                    <PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
                 loader: ({params}) => fetch(`https://magical-toyland-server.vercel.app/toys/${params.id}`)
             }
         ]
